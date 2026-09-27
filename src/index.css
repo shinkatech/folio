@@ -1,0 +1,53 @@
+@import "tailwindcss";
+
+@theme {
+  --color-cream: #f6f1e8;
+  --color-cream-2: #efe8db;
+  --color-ink: #1a1612;
+  --color-navy: #1c1917;
+  --color-muted: #6f675d;
+  --color-line: color-mix(in srgb, #1a1612 12%, transparent);
+  --color-bronze: #b08a5a;
+  --font-display: "Playfair Display", serif;
+  --font-body: "DM Sans", sans-serif;
+}
+
+@layer base {
+  html {
+    color-scheme: light;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply min-h-dvh bg-cream text-ink antialiased;
+    font-family: var(--font-body);
+  }
+
+  ::selection {
+    background: color-mix(in srgb, #1a1612 88%, transparent);
+    color: #f6f1e8;
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: var(--font-display);
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition:
+      opacity 0.8s cubic-bezier(0.19, 1, 0.22, 1),
+      transform 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+  }
+
+  .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
